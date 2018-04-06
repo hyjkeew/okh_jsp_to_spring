@@ -68,7 +68,6 @@ function searchBbs1(e) {
 	
 }
 </script>
-<a href="test.do">로그인</a>
 		<div class="partition1">
 			<h4 style="margin-bottom: 15px">Q&A <a href="qnaServlet?command=listQna"><img style="float: right" alt="게시판으로가기" src="image/moresee.PNG"></a></h4>
 			

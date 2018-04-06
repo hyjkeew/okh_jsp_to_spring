@@ -21,28 +21,20 @@ public class OSVMemberController {
 	private static final Logger logger=LoggerFactory.getLogger(OSVMemberController.class);
 	@Autowired
 	OSVMemberService oSVMemberService;
-/*	@RequestMapping(value="test.do",method= {RequestMethod.POST,RequestMethod.GET})
-	public String test(Model model)throws Exception {
-		logger.info("OSVMemberController test"+new Date());
-		
-		List<UserDto> list=oSVMemberService.gettest();
-		UserDto dto=list.get(0);
-		
-		model.addAttribute("login", dto);
-		return "test.tiles";
-	}*/
-	
-	@RequestMapping(value="test.do",method= {RequestMethod.POST,RequestMethod.GET})
-	public String test(Model model)throws Exception {
-		logger.info("OSVMemberController test"+new Date());
-		
-		model.addAttribute("test", oSVMemberService.test());
-		return "test.tiles";
-	}
 	@RequestMapping(value="join.do",method= {RequestMethod.POST,RequestMethod.GET})
 	public String join(Model model)throws Exception {
 		logger.info("OSVMemberController join"+new Date());
 		return "join.tiles";
+	}
+	@RequestMapping(value="joinAf.do",method= {RequestMethod.POST,RequestMethod.GET})		//regi.do에서와서 regi.jsp로가게한다
+	public String joinAf(UserDto user,Model model)throws Exception {	//추가가능한것 http도같이쓰수있는데 사용처는 로그인후세션저장할때
+		logger.info("OSVMemberController joinAf" + new Date());
+		boolean	b=oSVMemberService.addmember(user);
+			if (b) {
+				return "login.tiles";
+			}else {
+				return "join.tiles";
+			}
 	}
 	@RequestMapping(value="login.do",method= {RequestMethod.POST,RequestMethod.GET})
 	public String login(Model model)throws Exception {

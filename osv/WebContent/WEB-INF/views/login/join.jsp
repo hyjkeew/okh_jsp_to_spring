@@ -5,7 +5,7 @@
 <fmt:requestEncoding value="utf-8"/> 
 <!-- View -->
 	<div class="wrap">
-		<form action="User" method="POST">
+		<form action="joinAf.do" method="POST">
 			<table class="table table-bordered table-hover" style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
@@ -16,8 +16,7 @@
 					<tr>
 						<td style="width: 110px;"><h5>아이디</h5></td>
 						<td>
-							<input type="hidden" name="command" value="joinAf">
-							<input type="text" class="form-control" id="userID" name="userID" maxlength="20" placeholder="아이디를 입력하세요.">
+							<input type="text" class="form-control" id="userID" name="id" maxlength="20" placeholder="아이디를 입력하세요.">
 						</td>
 						<td style="width: 110px">
 							<button class="btn btn-primary" onclick="registerCheckFunction();" type="button">중복체크</button>
@@ -26,7 +25,7 @@
 					<tr>
 						<td style="width: 110px;"><h5>비밀번호</h5></td>
 						<td colspan="2">
-							<input type="password" class="form-control" id="userPassword1" name="userPassword1" maxlength="20" placeholder="비밀번호를 입력하세요.">
+							<input type="password" class="form-control" id="userPassword1" name="pwd" maxlength="20" placeholder="비밀번호를 입력하세요.">
 						</td>
 					</tr>
 					<tr>
@@ -39,13 +38,13 @@
 					<tr>
 						<td style="width: 110px;"><h5>이름</h5></td>
 						<td colspan="2">
-							<input type="text" class="form-control" id="userName" name="userName" maxlength="20" placeholder="이름을 입력하세요.">
+							<input type="text" class="form-control" id="userName" name="name" maxlength="20" placeholder="이름을 입력하세요.">
 						</td>
 					</tr>
 					<tr>
 						<td style="width: 110px;"><h5>나이</h5></td>
 						<td colspan="2">
-							<input type="text" class="form-control" id="userAge" name="userAge" maxlength="20" placeholder="나이를 입력하세요.">
+							<input type="text" class="form-control" id="userAge" name="age" maxlength="20" placeholder="나이를 입력하세요.">
 						</td>
 					</tr>
 					<tr>
@@ -54,10 +53,10 @@
 							<div class="form-group" style="text-align: center; margin: 0 auto;">
 								<div class="btn-group" data-toggle="buttons">
 									<label class="btn btn-primary active">
-										<input type="radio" name="userGender" autocomplete="off" value="남자" checked="checked">남자
+										<input type="radio" name="gender" autocomplete="off" value="남자" checked="checked">남자
 									</label>
 									<label class="btn btn-primary">
-										<input type="radio" name="userGender" autocomplete="off" value="여자">여자
+										<input type="radio" name="gender" autocomplete="off" value="여자">여자
 									</label>
 								</div>
 							</div>
@@ -66,7 +65,7 @@
 					<tr>
 						<td style="width: 110px;"><h5>이메일</h5></td>
 						<td colspan="2">
-							<input type="email" class="form-control" id="userEmail" name="userEmail" maxlength="20" placeholder="이메일을 입력하세요.">
+							<input type="email" class="form-control" id="userEmail" name="email" maxlength="20" placeholder="이메일을 입력하세요.">
 						</td>
 					</tr>
 					<tr>
