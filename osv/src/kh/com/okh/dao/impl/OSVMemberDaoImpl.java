@@ -27,4 +27,24 @@ public class OSVMemberDaoImpl implements OSVMemberDao {
 		return sqlsession.selectList(ns+"test");
 	}
 
+	@Override
+	public boolean addmember(UserDto user) throws Exception {
+		int n=sqlsession.insert(ns+"addmember", user);
+		return n>0?true:false;
+	}
+
+	@Override
+	public UserDto login(UserDto user) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlsession.selectOne(ns+"loginaf", user);
+	}
+
+	@Override
+	public int getID(UserDto user) {
+		// TODO Auto-generated method stub
+		return sqlsession.selectOne(ns+"getID", user);
+	}
+
+	
+
 }

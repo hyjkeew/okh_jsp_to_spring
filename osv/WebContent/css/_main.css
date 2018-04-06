@@ -53,7 +53,7 @@ input.login {
 	left: 120px;
  }
  input.bbs1 {
-   background: url(../image/bbs1.PNG) no-repeat;
+   background: url(../image/bbs3.PNG) no-repeat;
    border: none;
    cursor: pointer;
    width: 240px;
@@ -69,42 +69,6 @@ input.login {
    height: 60px;
    position: absolute;
 	top: 280px;
- }
- input.bbs3 {
-   background: url(../image/bbs3.PNG) no-repeat;
-   border: none;
-   cursor: pointer;
-   width: 240px;
-   height: 60px;
-   position: absolute;
-	top: 360px;
- }
- input.bbs4 {
-   background: url(../image/bbs4.png) no-repeat;
-   border: none;
-   cursor: pointer;
-   width: 240px;
-   height: 60px;
-   position: absolute;
-	top: 440px;
- }
- input.bbs5 {
-   background: url(../image/bbs5.png) no-repeat;
-   border: none;
-   cursor: pointer;
-   width: 240px;
-   height: 60px;
-   position: absolute;
-	top: 520px;
- }
- input.bbs6 {
-   background: url(../image/bbs6.png) no-repeat;
-   border: none;
-   cursor: pointer;
-   width: 240px;
-   height: 60px;
-   position: absolute;
-	top: 600px;
  }
  .wrap{
 width: 880px;

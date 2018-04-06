@@ -12,5 +12,17 @@
 	<definition name="regi.tiles" extends="mainpage.tiles"> extends상속받는거다
 		<put-attribute name="main" value="/WEB-INF/views/login/join.jsp"/>
 	</definition> -->
-	<definition name="test.tiles" template="/WEB-INF/views/login/tt.jsp"></definition>
+	<definition name="index.tiles" template="index.jsp"></definition>
+	<definition name="main.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
+		<put-attribute name="left_menu" value="/WEB-INF/views/common/left_menu.jsp"/>
+		<put-attribute name="main" value="/WEB-INF/views/login/main.jsp"/>
+	</definition>
+	<definition name="join.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
+		<put-attribute name="left_menu" value="/WEB-INF/views/common/left_menu.jsp"/>
+		<put-attribute name="main" value="/WEB-INF/views/login/join.jsp"/>
+	</definition>
+	<definition name="login.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
+		<put-attribute name="left_menu" value="/WEB-INF/views/common/left_menu.jsp"/>
+		<put-attribute name="main" value="/WEB-INF/views/login/login.jsp"/>
+	</definition>
 </tiles-definitions>

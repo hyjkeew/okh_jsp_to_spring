@@ -2,11 +2,18 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Member">
-	<!-- <select id="testall" resultType="kh.com.okh.model.UserDto">
-		SELECT *
+   <select id="loginaf" parameterType="kh.com.okh.model.UserDto" resultType="kh.com.okh.model.UserDto">
+		SELECT ID, PWD, NAME, AGE, GENDER, EMAIL, AUTH, PROFILE, SCORE, ADATE
 		FROM osv_member
-	</select> -->
-	   <select id="test" resultType="kh.com.okh.model.dto">
-      SELECT ID, PWD FROM TEST
-   </select>
+		WHERE ID=#{id} AND PWD=#{pwd}
+	</select>
+	<insert id="addmember" parameterType="kh.com.okh.model.UserDto">
+		INSERT INTO osv_member(ID, PWD, NAME, AGE, GENDER, EMAIL, AUTH, PROFILE, SCORE, ADATE)
+		VALUES(#{id},#{pwd},#{name},#{age},#{gender},#{email},3,#{profile},0,#{adate})
+	</insert>
+	<select id="getID" parameterType="kh.com.okh.model.UserDto" resultType="java.lang.Integer">
+	   SELECT NVL(COUNT(*), 0)
+	   FROM osv_member
+	   WHERE ID=#{id}
+	</select>
 </mapper>

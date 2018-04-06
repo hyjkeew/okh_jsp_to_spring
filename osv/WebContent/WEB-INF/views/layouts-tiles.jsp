@@ -6,26 +6,28 @@
 <html>
 <title>layouts-tiles</title>
 
-<tiles:insertAttribute name="header"/>
-
 <link rel="stylesheet" type="text/css"  
 	href="<%=request.getContextPath() %>/css/style.css"/>
-
+<link rel="stylesheet" type="text/css"  
+	href="<%=request.getContextPath() %>/css/_main.css?ver=2.01"/>
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/_totalbbs.css?ver=1.25">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/custom.css">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
+	
 </head>
 <body>
 
-<div id="body_wrap">
-	<div id="main_wrap">
-		<div id="left_menu_wrap">
-			<tiles:insertAttribute name="left_menu"/>
-		</div>
-		
-		<div id="bbs_wrap">
-			<tiles:insertAttribute name="main"/>		
-		</div>
-	
+
+	<div id="menu">
+		<tiles:insertAttribute name="left_menu"/>
 	</div>
-</div>
+	
+	<div id="wrap">
+		<tiles:insertAttribute name="main"/>		
+	</div>
+
      
 </body>
 </html>

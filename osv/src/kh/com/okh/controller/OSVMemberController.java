@@ -3,6 +3,8 @@ package kh.com.okh.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +38,41 @@ public class OSVMemberController {
 		
 		model.addAttribute("test", oSVMemberService.test());
 		return "test.tiles";
+	}
+	@RequestMapping(value="join.do",method= {RequestMethod.POST,RequestMethod.GET})
+	public String join(Model model)throws Exception {
+		logger.info("OSVMemberController join"+new Date());
+		return "join.tiles";
+	}
+	@RequestMapping(value="login.do",method= {RequestMethod.POST,RequestMethod.GET})
+	public String login(Model model)throws Exception {
+		logger.info("OSVMemberController login"+new Date());
+		return "login.tiles";
+	}
+	@RequestMapping(value="loginAf.do",method= {RequestMethod.POST,RequestMethod.GET})		//regi.do에서와서 regi.jsp로가게한다
+	public String loginAf(UserDto user,HttpServletRequest req,Model model)throws Exception {	//추가가능한것 http도같이쓰수있는데 사용처는 로그인후세션저장할때
+		logger.info("OSVMemberController loginAf" + new Date());
+		UserDto login=null;
+		login=oSVMemberService.login(user);
+		
+		if (login!=null && !login.getId().equals("")) {//로그인성공
+			req.getSession().setAttribute("login", login);			
+			return "redirect:/main.do";
+		}else {
+			req.getSession().invalidate();
+			return "login.tiles";		//컨트롤러에서컨트롤러로갈때 짐안들고가려면 redirect:/로보내면된다
+		}
+	}
+	@RequestMapping(value="main.do",method= {RequestMethod.POST,RequestMethod.GET})
+	public String main(Model model)throws Exception {
+		logger.info("OSVMemberController main"+new Date());
+		
+		return "main.tiles";
+	}
+	@RequestMapping(value="logout.do",method=RequestMethod.GET)
+	public String logout(Model model,HttpServletRequest req) {
+		logger.info("OSVMemberController logout" + new Date());
+		req.getSession().invalidate();
+		return "index.tiles";
 	}
 }
