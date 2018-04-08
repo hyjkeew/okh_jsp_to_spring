@@ -48,6 +48,9 @@ public class OSVMemberDaoImpl implements OSVMemberDao {
 		return sqlsession.selectOne(ns+"getEMAIL", user);
 	}
 
-	
+	@Override
+	public UserDto getPROFILE(UserDto user) {
+		return sqlsession.selectOne(ns+"getPROFILE", user);
+	}
 
 }

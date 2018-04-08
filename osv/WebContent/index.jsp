@@ -266,7 +266,7 @@ function searchBbs() {
 	var word = document.getElementById("search").value;
 	var choice = document.getElementById("choice").value;
 	$("#select_id").val("<%=cho %>").prop("selected", true);
-	location.href = "TotalController?command=serch&findWord=" + word + "&choice=" + choice;	
+	location.href = "TotalController?command=serch&findWord=" + word + "&choice=" + choice;
 }
 function searchBbs1(e) {
 	$("#search").val("");

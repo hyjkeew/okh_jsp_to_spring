@@ -21,4 +21,9 @@
 	   FROM osv_member
 	   WHERE EMAIL=#{email}
 	</select>
+	<select id="getPROFILE" parameterType="kh.com.okh.model.UserDto" resultType="kh.com.okh.model.UserDto">
+		SELECT PROFILE
+		FROM osv_member
+		WHERE ID=#{id}
+	</select>
 </mapper>

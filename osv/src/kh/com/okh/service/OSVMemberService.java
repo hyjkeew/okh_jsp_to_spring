@@ -12,4 +12,5 @@ public interface OSVMemberService {
 	public UserDto login(UserDto user) throws Exception;
 	public int getID(UserDto user);
 	public int getEMAIL(UserDto user);
+	public UserDto getPROFILE(UserDto user);
 }

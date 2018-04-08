@@ -12,4 +12,5 @@ public interface OSVMemberDao {
 	public UserDto login(UserDto user) throws Exception;
 	int getID(UserDto user);
 	int getEMAIL(UserDto user);
+	UserDto getPROFILE(UserDto user);
 }

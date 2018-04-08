@@ -25,6 +25,7 @@ public class OSVMemberController {
 	@Autowired
 	private OSVMemberService oSVMemberService;
 	
+/*join.jsp로 이동*/
 	@RequestMapping(value="join.do",method={RequestMethod.POST,RequestMethod.GET})
 	public String join(Model model)throws Exception {
 		logger.info("OSVMemberController join" + new Date());
@@ -32,6 +33,7 @@ public class OSVMemberController {
 		return "join.tiles";
 	}
 	
+/*[ajax]아이디 중복 확인*/
 	@ResponseBody
 	@RequestMapping(value="getID.do", method={RequestMethod.POST,RequestMethod.GET})
 	public String getID(UserDto user)throws Exception {
@@ -42,6 +44,7 @@ public class OSVMemberController {
 		return oSVMemberService.getID(user)+"";
 	}
 	
+/*[ajax]이메일 중복 확인*/
 	@ResponseBody
 	@RequestMapping(value="getEMAIL.do", method={RequestMethod.POST,RequestMethod.GET})
 	public String getEMAIL(UserDto user)throws Exception {
@@ -52,6 +55,7 @@ public class OSVMemberController {
 		return oSVMemberService.getEMAIL(user)+"";
 	}
 	
+/*[ajax]회원가입 전 최종확인(빈칸, 아이디, 비밀번호, 이메일)*/
 	@ResponseBody
 	@RequestMapping(value="joincheck.do", method={RequestMethod.POST,RequestMethod.GET})
 	public String joincheck(HttpServletRequest req, UserDto user)throws Exception {
@@ -73,6 +77,7 @@ public class OSVMemberController {
 		return "5";
 	}
 	
+/*회원가입 처리*/
 	@RequestMapping(value="joinAf.do", method={RequestMethod.POST,RequestMethod.GET})
 	public String joinAf(UserDto user, Model model)throws Exception {
 		logger.info("OSVMemberController joinAf" + new Date());
@@ -84,12 +89,14 @@ public class OSVMemberController {
 		}
 	}
 	
+/*login.jsp로 이동*/
 	@RequestMapping(value="login.do",method={RequestMethod.POST,RequestMethod.GET})
 	public String login(Model model)throws Exception {
 		logger.info("OSVMemberController login"+new Date());
 		return "login.tiles";
 	}
 	
+/*로그인 처리(로그인 세션)*/
 	@RequestMapping(value="loginAf.do",method={RequestMethod.POST,RequestMethod.GET})
 	public String loginAf(UserDto user, HttpServletRequest req, Model model)throws Exception {
 		logger.info("OSVMemberController loginAf" + new Date());
@@ -105,7 +112,19 @@ public class OSVMemberController {
 			return "login.tiles";
 		}
 	}
+
+/*로그인이 필요한 페이지 접근 시*/
+	@RequestMapping(value="gotologin.do",method={RequestMethod.POST,RequestMethod.GET})
+	public String gotologin(HttpServletRequest req)throws Exception {
+		logger.info("OSVMemberController gotologin" + new Date());
+		
+		req.getSession().setAttribute("messageType", "오류 메시지");
+		req.getSession().setAttribute("messageContent", "로그인이 필요한 페이지입니다.");
+		
+		return "redirect:/login.do";
+	}
 	
+/*main.jsp로 이동*/
 	@RequestMapping(value="main.do",method={RequestMethod.POST,RequestMethod.GET})
 	public String main(Model model)throws Exception {
 		logger.info("OSVMemberController main"+new Date());
@@ -113,6 +132,7 @@ public class OSVMemberController {
 		return "main.tiles";
 	}
 	
+/*로그아웃 처리*/
 	@RequestMapping(value="logout.do",method=RequestMethod.GET)
 	public String logout(Model model, HttpServletRequest req) {
 		logger.info("OSVMemberController logout" + new Date());

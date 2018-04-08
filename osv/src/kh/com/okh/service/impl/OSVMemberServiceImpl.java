@@ -50,6 +50,11 @@ public class OSVMemberServiceImpl implements OSVMemberService {
 		return oSVMemberDao.getEMAIL(user);
 	}
 
+	@Override
+	public UserDto getPROFILE(UserDto user) {
+		return oSVMemberDao.getPROFILE(user);
+	}
+
 	
 	
 }
