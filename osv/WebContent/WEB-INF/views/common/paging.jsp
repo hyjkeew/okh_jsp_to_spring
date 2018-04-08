@@ -84,7 +84,14 @@
 				<a href="#" onclick="gotoPage('<%=i %>')"><span><%=i+1 %></span></a>
  			</li>
 		    	<% 
-			} 
+			}else { 
+		    	%>	
+		    	 <li class="step">
+                    <a href="#none" title="<%=i+1%>페이지" onclick="goPage(<%=i%>);" style="font-size:7.5pt; color:#000000; font-weight:normal;"><%=i+1%></a>&nbsp;
+                    </li>
+				
+		    	<%		
+		    } 
 		}
 		    	
 		if (screenEndPageIndex < totalPageCount){

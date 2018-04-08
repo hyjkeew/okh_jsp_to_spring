@@ -26,4 +26,10 @@ public class OSVTechbbsServiceImpl implements OSVTechbbsService {
 		// TODO Auto-generated method stub
 		return oSVTechbbsDao.getTechBbsCount(param);
 	}
+
+	@Override
+	public List<TechbbsDto> getTechBbsSortingList(BbsParam param) throws Exception {
+		// TODO Auto-generated method stub
+		return oSVTechbbsDao.getTechBbsSortingList(param);
+	}
 }

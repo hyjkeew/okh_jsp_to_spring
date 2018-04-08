@@ -26,7 +26,7 @@ public class OSVTechbbsController {
 	 
 	@RequestMapping(value="techlist.do",method= {RequestMethod.POST,RequestMethod.GET})
 	public String techbbslist(Model model,BbsParam param)throws Exception {
-		logger.info("OSVTechbbsController   atechbbslist " + new Date());		
+		logger.info("OSVTechbbsController techbbslist " + new Date());		
 		
 		System.out.println(param.toString());
 		
@@ -40,6 +40,34 @@ public class OSVTechbbsController {
 		
 		int totalRecordCount = oSVTechbbsService.getTechBbsCount(param);
 		List<TechbbsDto> techlist = oSVTechbbsService.getTechBbsPagingList(param);
+		model.addAttribute("techlist", techlist);
+		
+		model.addAttribute("pageNumber", sn);
+		model.addAttribute("pageCountPerScreen", 10);
+		model.addAttribute("recordCountPerPage", param.getRecordCountPerPage());
+		model.addAttribute("totalRecordCount", totalRecordCount);
+		
+		model.addAttribute("s_category", param.getS_category());
+		model.addAttribute("s_keyword", param.getS_keyword());
+		
+		return "techlist.tiles";		
+	}
+	@RequestMapping(value="sorthe.do",method= {RequestMethod.POST,RequestMethod.GET})
+	public String techbbssortinglist(Model model,BbsParam param)throws Exception {
+		logger.info("OSVTechbbsController sorthe " + new Date());		
+		
+		System.out.println(param.toString());
+		
+		// paging 처리
+		int sn = param.getPageNumber();
+		int start = (sn) * param.getRecordCountPerPage() + 1;
+		int end = (sn+1) * param.getRecordCountPerPage();
+		
+		param.setStart(start);
+		param.setEnd(end);
+		
+		int totalRecordCount = oSVTechbbsService.getTechBbsCount(param);
+		List<TechbbsDto> techlist = oSVTechbbsService.getTechBbsSortingList(param);
 		model.addAttribute("techlist", techlist);
 		
 		model.addAttribute("pageNumber", sn);

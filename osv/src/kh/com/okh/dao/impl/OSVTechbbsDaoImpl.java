@@ -29,5 +29,11 @@ public class OSVTechbbsDaoImpl implements OSVTechbbsDao {
 		num=sqlsession.selectOne(ns+"getTechBbsCount", param);
 		return num;
 	}
+
+	@Override
+	public List<TechbbsDto> getTechBbsSortingList(BbsParam param) throws Exception {
+		List<TechbbsDto> list=sqlsession.selectList(ns+"getTechBbsSortingList", param);
+		return list;
+	}
 	
 }
