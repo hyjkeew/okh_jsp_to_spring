@@ -46,6 +46,8 @@ public class UserDto implements Serializable {
 	private int score;
 	private String adate;
 	
+	private String pwd2;
+	
 	public UserDto() {
 	}
 	
@@ -144,11 +146,19 @@ public class UserDto implements Serializable {
 		this.adate = adate;
 	}
 
+	public String getPwd2() {
+		return pwd2;
+	}
+
+	public void setPwd2(String pwd2) {
+		this.pwd2 = pwd2;
+	}
+
 	@Override
 	public String toString() {
 		return "UserDto [id=" + id + ", pwd=" + pwd + ", name=" + name + ", age=" + age + ", gender=" + gender
 				+ ", email=" + email + ", auth=" + auth + ", profile=" + profile + ", score=" + score + ", adate="
-				+ adate + "]";
+				+ adate + ", pwd2=" + pwd2 + "]";
 	}
 	
 }

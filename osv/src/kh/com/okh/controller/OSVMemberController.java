@@ -54,10 +54,23 @@ public class OSVMemberController {
 	
 	@ResponseBody
 	@RequestMapping(value="joincheck.do", method={RequestMethod.POST,RequestMethod.GET})
-	public String joincheck(UserDto user)throws Exception {
+	public String joincheck(HttpServletRequest req, UserDto user)throws Exception {
 		logger.info("OSVMemberController joincheck" + new Date());
 		
-		return null;
+		if(user.getId() == null || user.getId().equals("") || user.getPwd() == null || user.getPwd().equals("") || user.getPwd2() == null || user.getPwd2().equals("") ||
+				user.getName() == null || user.getName().equals("") || user.getAge() == 0 || user.getEmail() == null || user.getEmail().equals("")){
+			return "1";
+		}
+		if(!user.getPwd().equals(user.getPwd2())) {
+			return "2";
+		}
+		if(oSVMemberService.getID(user) == 1) {
+			return "3";
+		}
+		if(oSVMemberService.getEMAIL(user) == 1) {
+			return "4";
+		}
+		return "5";
 	}
 	
 	@RequestMapping(value="joinAf.do", method={RequestMethod.POST,RequestMethod.GET})

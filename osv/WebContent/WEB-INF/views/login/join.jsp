@@ -9,7 +9,7 @@
 
 <!-- View -->
 	<div class="wrap">
-		<form action="joinAf.do" method="POST">
+		<form action="#none" id="_frmForm" method="POST">
 			<table class="table table-bordered table-hover" style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
@@ -20,33 +20,33 @@
 					<tr>
 						<td style="width: 110px;"><h5>아이디</h5></td>
 						<td>
-							<input type="text" class="form-control" id="userID" name="id" maxlength="20" placeholder="아이디를 입력하세요.">
+							<input type="text" class="form-control" id="id" name="id" maxlength="20" placeholder="아이디를 입력하세요.">
 							<h5 style="color: red;" id="idCheckMessage" align="left"></h5>
 						</td>
 					</tr>
 					<tr>
 						<td style="width: 110px;"><h5>비밀번호</h5></td>
 						<td colspan="2">
-							<input type="password" class="form-control" id="userPassword1" name="pwd" maxlength="20" placeholder="비밀번호를 입력하세요.">
+							<input type="password" class="form-control" id="pwd" name="pwd" maxlength="20" placeholder="비밀번호를 입력하세요.">
 						</td>
 					</tr>
 					<tr>
 						<td style="width: 110px;"><h5>비밀번호 확인</h5></td>
 						<td colspan="2">
-							<input onkeyup="passwordCheckFunction();" type="password" class="form-control" id="userPassword2" name="userPassword2" maxlength="20" placeholder="비밀번호 확인을 입력하세요.">
+							<input onkeyup="passwordCheckFunction();" type="password" class="form-control" id="pwd2" name="pwd2" maxlength="20" placeholder="비밀번호 확인을 입력하세요.">
 							<h5 style="color: red;" id="passwordCheckMessage" align="left"></h5>
 						</td>
 					</tr>
 					<tr>
 						<td style="width: 110px;"><h5>이름</h5></td>
 						<td colspan="2">
-							<input type="text" class="form-control" id="userName" name="name" maxlength="20" placeholder="이름을 입력하세요.">
+							<input type="text" class="form-control" id="name" name="name" maxlength="20" placeholder="이름을 입력하세요.">
 						</td>
 					</tr>
 					<tr>
 						<td style="width: 110px;"><h5>나이</h5></td>
 						<td colspan="2">
-							<input type="text" class="form-control" id="userAge" name="age" maxlength="20" placeholder="나이를 입력하세요.">
+							<input type="text" class="form-control" id="age" name="age" maxlength="20" placeholder="나이를 입력하세요.">
 						</td>
 					</tr>
 					<tr>
@@ -67,13 +67,13 @@
 					<tr>
 						<td style="width: 110px;"><h5>이메일</h5></td>
 						<td colspan="2">
-							<input type="email" class="form-control" id="userEmail" name="email" maxlength="20" placeholder="이메일을 입력하세요.">
+							<input type="email" class="form-control" id="email" name="email" maxlength="20" placeholder="이메일을 입력하세요.">
 							<h5 style="color: red;" id="emailCheckMessage" align="left"></h5>
 						</td>
 					</tr>
 					<tr>
 						<td style="text-align: left;"  colspan="3">
-							<input class="btn btn-primary pull-right" type="submit" value="등록">
+							<input class="btn btn-primary pull-right" type="button" id="joinBtn" value="등록">
 						</td>
 					</tr>
 				</tbody>
@@ -86,16 +86,16 @@
 	<script type="text/javascript">
 /* 아이디 중복 확인 */
 		$(function() {
-			$("#userID").blur(function() {
+			$("#id").blur(function() {
 				if(id != null || id != ""){
-					var id = $('#userID').val();
+					var id = $('#id').val();
 					$.ajax({
 						type: 'POST',
 						url: 'getID.do',
 						data: {id: id},
 						success: function(result) {
 							if(result == "1"){
-								$('#idCheckMessage').html('이미 사용된 아이디 입니다.');
+								$('#idCheckMessage').html('이미 사용된 아이디입니다.');
 							}else{
 								$('#idCheckMessage').html('');
 							}
@@ -116,8 +116,8 @@
 		}
 /* 이메일 중복 확인 */
 		$(function() {
-			$("#userEmail").blur(function() {
-				var email = $('#userEmail').val();
+			$("#email").blur(function() {
+				var email = $('#email').val();
 				if(email != null || email != ""){
 					$.ajax({
 						type: 'POST',
@@ -125,7 +125,7 @@
 						data: {email: email},
 						success: function(result) {
 							if(result == "1"){
-								$('#emailCheckMessage').html('이미 사용된 이메일 입니다.');
+								$('#emailCheckMessage').html('이미 사용된 이메일입니다.');
 							}else{
 								$('#emailCheckMessage').html('');
 							}
@@ -134,8 +134,43 @@
 				}
 			});
 		});
+/* 빈칸 확인 */
+		$("#joinBtn").click(function() {
+			var data = {
+					id: $('#id').val(),
+					pwd: $('#pwd').val(),
+					pwd2: $('#pwd2').val(),
+					name: $('#name').val(),
+					age: $('#age').val(),
+					email: $('#email').val(),
+			};
+			
+			$.ajax({
+				type: 'POST',
+				url: 'joincheck.do',
+				data: data,
+				success: function(result) {
+					if(result == "1"){
+						$('#checkMessage').html('모든 내용을 입력하세요.');
+						$('#checkType').attr('class', 'modal-content panel-warning');
+					}else if(result == "2"){
+						$('#checkMessage').html('비밀번호가 서로 일치하지 않습니다.');
+						$('#checkType').attr('class', 'modal-content panel-warning');
+					}else if(result == "3"){
+						$('#checkMessage').html('이미 사용된 아이디입니다.');
+						$('#checkType').attr('class', 'modal-content panel-warning');
+					}else if(result == "4"){
+						$('#checkMessage').html('이미 사용된 이메일입니다.');
+						$('#checkType').attr('class', 'modal-content panel-warning');
+					}else if(result == "5"){
+						$("#_frmForm").attr({"target":"_self", "action":"joinAf.do"}).submit();
+					}
+					$('#checkModal').modal("show");
+				}
+			});
+		});
 	</script>
-<!-- /아이디 중복 확인 -->
+<!-- /중복 확인 스크립트 -->
 
 <!-- Modal -->
 	<!-- View 이동했을 때 session의 messageContent가 null이 아니면 modal 실행 -->
