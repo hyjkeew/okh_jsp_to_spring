@@ -7,7 +7,6 @@
 	int pageCountPerScreen;		// 스크린당 페이지수 	
 	int recordCountPerPage;		// 페이지당 글수
 		
-	
 	String st1 = request.getParameter("totalRecordCount");
 	if(st1 == null)	totalRecordCount = 0;
 	else			totalRecordCount = Integer.parseInt(st1);
@@ -39,13 +38,13 @@
 	if (screenEndPageIndex > totalPageCount) screenEndPageIndex = totalPageCount;		// 페이지 블록을 10까지만 표시하려고 하는 처리
 	//		10					2				2					2
 			
-	/* System.out.println("totalRecordCount:" + totalRecordCount);
+	System.out.println("totalRecordCount:" + totalRecordCount);
 	System.out.println("pageNumber:" + pageNumber);
 	System.out.println("pageCountPerScreen:" + pageCountPerScreen);
 	System.out.println("recordCountPerPage:" + recordCountPerPage);
 	System.out.println("totalPageCount:" + totalPageCount);
 	System.out.println("screenStartPageIndex:" + screenStartPageIndex);
-	System.out.println("screenEndPageIndex:" + screenEndPageIndex); */
+	System.out.println("screenEndPageIndex:" + screenEndPageIndex); 
 
 	/* 
 	totalRecordCount:12
@@ -65,39 +64,45 @@
 	}
 %>
 <div style="float:left; width:96%; text-align:center;"> 
-	<a href="#none" title="처음페이지" onclick="goPage('0');"><img src="image/arrow_first.gif" alt="처음페이지" style="width:9px; height:9px;"/></a>&nbsp;		
+<ul class="pagination pagination-sm">
+	<li class="step">
+	<a href="#none" title="처음페이지" onclick="goPage('0');">첫페이지</a>		
+	</li>
+
+		
 		<%
 		if (screenStartPageIndex > 1){
-			%>
-			<a href="#none" title="이전페이지" onclick="goPage('<%=screenStartPageIndex-1%>');"><img src="image/arrow_prev.gif" alt="이전페이지" style="width:9px; height:9px;"/></a>&nbsp;	
+			%>	
+			<li class="step"><a href="#" onclick="gotoPage('<%=screenStartPageIndex-1 %>')">&lt;</a></li>
 			<%
 		}
 		    	
 		for (int i=screenStartPageIndex; i<screenEndPageIndex ;i++){
 			if (i==pageNumber){
 		    	%>	
-				<span style="font-size:9pt; color:#000000; font-weight:bold;"><%=i+1%></span>&nbsp;
+				<li class="active">
+				<a href="#" onclick="gotoPage('<%=i %>')"><span><%=i+1 %></span></a>
+ 			</li>
 		    	<% 
-			} else { 
-		    	%>	
-				<a href="#none" title="<%=i+1%>페이지" onclick="goPage(<%=i%>);" style="font-size:7.5pt; color:#000000; font-weight:normal;"><%=i+1%></a>&nbsp;
-		    	<%		
-		    }
+			} 
 		}
 		    	
 		if (screenEndPageIndex < totalPageCount){
 		    %>	
-			<a href="#none" title="다음페이지" onclick="goPage(<%=screenEndPageIndex %>);"><img src="image/arrow_next.gif" alt="다음페이지" style="width:9px; height:9px;"/></a>&nbsp;
+		    <li class="step">
+	            <a href="#" onclick="gotoPage('<%=screenEndPageIndex %>')">&gt;</a>
+	            </li>
 		    <%
-		} // end if
-		    
+		}
 		int end_page = 0;
 		if (totalPageCount > 0){
 			end_page = totalPageCount - 1;
 		}
 		%>
-		        	
-	<a href="#none" title="마지막페이지" onclick="goPage(<%=end_page %>);" ><img src="image/arrow_end.gif" alt="마지막페이지" style="width:9px; height:9px;" /></a>
+	 <li class="step">
+	             <a href="#" onclick="gotoPage('<%=end_page %>')">끝페이지</a>      <!-- 14페이지 -->
+	          </li>	        	
+</ul>
 </div>		
 			
 <div style="float:left; width:4%; text-align:center;">		

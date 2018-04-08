@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import kh.com.okh.dao.OSVMemberDao;
 import kh.com.okh.model.UserDto;
-import kh.com.okh.model.dto;
 @Repository
 public class OSVMemberDaoImpl implements OSVMemberDao {
 	
@@ -22,10 +21,6 @@ public class OSVMemberDaoImpl implements OSVMemberDao {
 		return sqlsession.selectList(ns+"testall");
 	}
 
-	@Override
-	public List<dto> test() {
-		return sqlsession.selectList(ns+"test");
-	}
 
 	@Override
 	public boolean addmember(UserDto user) throws Exception {

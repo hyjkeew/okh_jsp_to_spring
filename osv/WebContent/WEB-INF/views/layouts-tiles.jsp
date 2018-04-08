@@ -9,8 +9,9 @@
 <link rel="stylesheet" type="text/css"  
 	href="<%=request.getContextPath() %>/css/style.css"/>
 <link rel="stylesheet" type="text/css"  
-	href="<%=request.getContextPath() %>/css/_main.css?ver=2.01"/>
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/_totalbbs.css?ver=1.25">
+	href="<%=request.getContextPath() %>/css/_main.css?ver=2.03"/>
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/_totalbbs.css?ver=1.26">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/_techbbs.css?ver=1.67">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.css">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/custom.css">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -24,9 +25,8 @@
 		<tiles:insertAttribute name="left_menu"/>
 	</div>
 	
-	<div id="wrap">
 		<tiles:insertAttribute name="main"/>		
-	</div>
+	
 
      
 </body>

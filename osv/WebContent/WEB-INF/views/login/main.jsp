@@ -3,20 +3,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:requestEncoding value="utf-8"/> 
-<%!
-// 답글
-public String arrow(int depth){	
-	String rs = "<img src='image/arrow.png' width='20px' height='20px'/>";
-	String nbsp = "&nbsp;&nbsp;&nbsp;&nbsp;";
-	String ts = "";
-	
-	for(int i = 0;i < depth; i++){
-		ts += nbsp;
-	}
-	return depth == 0?"":ts+rs;
-}
-%>
-	<%
+<%
 	String findWord = request.getParameter("findWord"); 
 	String choice = request.getParameter("choice"); 
 if(findWord == null){
@@ -29,7 +16,7 @@ else if(choice.equals("title")) cho = 0;
 else if(choice.equals("writer")) cho = 1;
 else if(choice.equals("content")) cho = 2;
 else if(choice.equals("tagname")) cho = 3;
-%>
+%>	
 	<!-- 황준현 -->
 <!-- wrap로 메인페이지 섹션사이즈만들어준거고 그밑에 자식들 partition1~partition4로 테이블뿌리면된니다  -->
 	<div class="wrap" id="tableChange">

@@ -25,4 +25,8 @@
 		<put-attribute name="left_menu" value="/WEB-INF/views/common/left_menu.jsp"/>
 		<put-attribute name="main" value="/WEB-INF/views/login/login.jsp"/>
 	</definition>
+	<definition name="techlist.tiles" template="/WEB-INF/views/layouts-tiles.jsp">
+		<put-attribute name="left_menu" value="/WEB-INF/views/common/left_menu.jsp"/>
+		<put-attribute name="main" value="/WEB-INF/views/techbbs/techbbs.jsp"/>
+	</definition>
 </tiles-definitions>

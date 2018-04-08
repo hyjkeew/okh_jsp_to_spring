@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import kh.com.okh.dao.OSVMemberDao;
 import kh.com.okh.model.UserDto;
-import kh.com.okh.model.dto;
 import kh.com.okh.service.OSVMemberService;
 @Service
 public class OSVMemberServiceImpl implements OSVMemberService {
@@ -17,11 +16,6 @@ public class OSVMemberServiceImpl implements OSVMemberService {
 	@Override
 	public List<UserDto> gettest() {
 		return oSVMemberDao.gettest();
-	}
-
-	@Override
-	public List<dto> test() {
-		return oSVMemberDao.test();
 	}
 
 	@Override
