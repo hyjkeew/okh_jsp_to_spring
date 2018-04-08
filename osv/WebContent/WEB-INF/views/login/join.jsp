@@ -4,8 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <fmt:requestEncoding value="utf-8"/>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
 
 <!-- View -->
 	<div class="wrap">
@@ -106,8 +104,8 @@
 		});
 /* 비밀번호 확인 */
 		function passwordCheckFunction() {
-			var userPassword1 = $('#userPassword1').val();
-			var userPassword2 = $('#userPassword2').val();
+			var userPassword1 = $('#pwd').val();
+			var userPassword2 = $('#pwd2').val();
 			if(userPassword1 != userPassword2){
 				$('#passwordCheckMessage').html('비밀번호가 서로 일치하지 않습니다.');
 			}else{
@@ -144,7 +142,6 @@
 					age: $('#age').val(),
 					email: $('#email').val(),
 			};
-			
 			$.ajax({
 				type: 'POST',
 				url: 'joincheck.do',
