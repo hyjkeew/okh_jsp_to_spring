@@ -12,8 +12,13 @@
 		VALUES(#{id},#{pwd},#{name},#{age},#{gender},#{email},3,'../image/muser.png',0,now())
 	</insert>
 	<select id="getID" parameterType="kh.com.okh.model.UserDto" resultType="java.lang.Integer">
-	   SELECT NVL(COUNT(*), 0)
+	   SELECT IFNULL(COUNT(*), 0)
 	   FROM osv_member
 	   WHERE ID=#{id}
+	</select>
+	<select id="getEMAIL" parameterType="kh.com.okh.model.UserDto" resultType="java.lang.Integer">
+	   SELECT IFNULL(COUNT(*), 0)
+	   FROM osv_member
+	   WHERE EMAIL=#{email}
 	</select>
 </mapper>

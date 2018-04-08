@@ -11,4 +11,5 @@ public interface OSVMemberDao {
 	boolean addmember(UserDto user) throws Exception;
 	public UserDto login(UserDto user) throws Exception;
 	int getID(UserDto user);
+	int getEMAIL(UserDto user);
 }

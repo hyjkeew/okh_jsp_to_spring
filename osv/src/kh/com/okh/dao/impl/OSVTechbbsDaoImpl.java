@@ -7,8 +7,9 @@ import org.springframework.stereotype.Repository;
 import kh.com.okh.dao.OSVTechbbsDao;
 @Repository
 public class OSVTechbbsDaoImpl implements OSVTechbbsDao {
+	
 	@Autowired
-	SqlSessionTemplate sqlsession;
+	private SqlSessionTemplate sqlsession;
 	
 	private String ns="Techbbs.";
 	

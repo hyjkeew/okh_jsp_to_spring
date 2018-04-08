@@ -8,7 +8,8 @@ import kh.com.okh.model.dto;
 public interface OSVMemberService {
 	public List<UserDto> gettest();
 	public List<dto> test();
-	boolean addmember(UserDto user) throws Exception;
+	public boolean addmember(UserDto user) throws Exception;
 	public UserDto login(UserDto user) throws Exception;
-	int getID(UserDto user);
+	public int getID(UserDto user);
+	public int getEMAIL(UserDto user);
 }

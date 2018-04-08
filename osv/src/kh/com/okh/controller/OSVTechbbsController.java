@@ -10,7 +10,11 @@ import kh.com.okh.service.OSVTechbbsService;
 
 @Controller
 public class OSVTechbbsController {
+	
 	private static final Logger logger=LoggerFactory.getLogger(OSVTechbbsController.class);
+	
 	@Autowired
-	OSVTechbbsService oSVTechbbsService;
+	private OSVTechbbsService oSVTechbbsService;
+	
+	
 }

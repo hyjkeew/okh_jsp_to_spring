@@ -16,32 +16,38 @@ public class OSVMemberServiceImpl implements OSVMemberService {
 
 	@Override
 	public List<UserDto> gettest() {
-		// TODO Auto-generated method stub
 		return oSVMemberDao.gettest();
 	}
 
 	@Override
 	public List<dto> test() {
-		// TODO Auto-generated method stub
 		return oSVMemberDao.test();
 	}
 
 	@Override
 	public boolean addmember(UserDto user) throws Exception {
-		// TODO Auto-generated method stub
 		return oSVMemberDao.addmember(user);
 	}
 
 	@Override
 	public UserDto login(UserDto user) throws Exception {
-		// TODO Auto-generated method stub
 		return oSVMemberDao.login(user);
 	}
 
 	@Override
 	public int getID(UserDto user) {
-		// TODO Auto-generated method stub
-		return oSVMemberDao.getID(user);
+		int n = oSVMemberDao.getID(user);
+		
+		if(user.getId().equals("")) {
+			n = 1;
+		}
+			
+		return n;
+	}
+
+	@Override
+	public int getEMAIL(UserDto user) {
+		return oSVMemberDao.getEMAIL(user);
 	}
 
 	
